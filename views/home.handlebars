@@ -1,0 +1,43 @@
+<html>
+<head>
+	<title>Learn Chord Sounds</title>
+
+	<h1> Guess The Chord </h1>
+</head>
+
+<body>
+
+	<input type="button" value="PLAY" onclick="playAudio()">
+	<audio id="audio" src=""></audio>
+
+
+
+<script>
+
+	var audioFiles = ["bugsbunny1.wav", "daffyduck1.wav", "Record_0018.wav"];
+
+	/**
+	 * Returns a random integer between min (inclusive) and max (inclusive)
+	 * Using Math.round() will give you a non-uniform distribution!
+	 */
+	function getRandomInt(min, max) {
+	    return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+
+	function playAudio() {
+
+		var randNum = getRandomInt(0, audioFiles.length - 1);
+
+		var audio = document.getElementById('audio');
+		audio.src = "audio_files/" + audioFiles[randNum];
+		audio.play();
+	}
+
+</script>
+
+
+</body>
+
+
+
+</html>
