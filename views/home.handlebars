@@ -2,17 +2,70 @@
 <head>
 	<title>Learn Chord Sounds</title>
 
-	<h1> Guess The Chord </h1>
+	<br><br>
+	<h1 align="center"> Guess The Chord </h1>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
 </head>
+
+
 
 <body>
 
-	<input type="button" value="PLAY" onclick="playAudio()">
+	<br> 
+	<div class="text-center">
+		<button type="button" class="btn btn-primary" onclick="playAudio()">Play Chord</button>
+	</div>
 	<audio id="audio" src=""></audio>
+	<br><br>
+	<div class="text-center" id="correct_incorrect">...</div>
+	<br><br>
 
+	<div class="text-center">
+		<button type="button" class="btn btn-secondary" onclick="chordGuess('bugsbunny1.wav')">E Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">F Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">F# Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">G Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">G# Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">A Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">A# Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">B Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">B# Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">C Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">C# Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">D Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">D# Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">E Min</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">F Min</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">F# Min</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">G Min</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">G# Min</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">A Min</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">A# Min</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">B Min</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">B# Min</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">C Min</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">C# Min</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">D Min</button>
+		<button type="button" class="btn btn-secondary" onclick="playAudio()">D# Min</button>
+	</div>
+
+	<br><br>
+	<div class="text-center">
+		<button type="button" class="btn btn-primary" onclick="tellMeChord()">Tell Me Chord</button>
+	</div>
+	<br>
+	<div id="tellMeChord" class="text-center"></div>
 
 
 <script>
+
+	var curAudio = "";
 
 	var audioFiles = ["bugsbunny1.wav", "daffyduck1.wav", "Record_0018.wav"];
 
@@ -26,11 +79,40 @@
 
 	function playAudio() {
 
-		var randNum = getRandomInt(0, audioFiles.length - 1);
+		var correct_incorrect = document.getElementById('correct_incorrect');
+		correct_incorrect.innerHTML = "...";
+
+		var tellMeChord = document.getElementById('tellMeChord');
+		tellMeChord.innerHTML = ""
 
 		var audio = document.getElementById('audio');
+		var randNum = getRandomInt(0, audioFiles.length - 1);
+
 		audio.src = "audio_files/" + audioFiles[randNum];
+		curAudio = audioFiles[randNum];
+
+
 		audio.play();
+	}
+
+	function chordGuess(chord) {
+
+		var correct_incorrect = document.getElementById('correct_incorrect');
+
+		if(chord == curAudio) {
+			correct_incorrect.innerHTML = "Correct!";
+			correct_incorrect.style.color = "green";
+		}
+		else {
+			correct_incorrect.innerHTML = "Incorrect";
+			correct_incorrect.style.color = "red";
+		}
+
+	}
+
+	function tellMeChord() {
+		var chord = document.getElementById('tellMeChord');
+		chord.innerHTML = curAudio;
 	}
 
 </script>
