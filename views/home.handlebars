@@ -20,6 +20,7 @@
 	<br> 
 	<div class="text-center">
 		<button type="button" class="btn btn-primary" onclick="playAudio()">Play Chord</button>
+		<button type="button" class="btn btn-primary" onclick="playAudioAgain()">Play Chord Again</button>
 	</div>
 	<audio id="audio" src=""></audio>
 	<br><br>
@@ -27,32 +28,32 @@
 	<br><br>
 
 	<div class="text-center">
-		<button type="button" class="btn btn-secondary" onclick="chordGuess('bugsbunny1.wav')">E Maj</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">F Maj</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">F# Maj</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">G Maj</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">G# Maj</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">A Maj</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">A# Maj</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">B Maj</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">B# Maj</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">C Maj</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">C# Maj</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">D Maj</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">D# Maj</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">E Min</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">F Min</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">F# Min</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">G Min</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">G# Min</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">A Min</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">A# Min</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">B Min</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">B# Min</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">C Min</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">C# Min</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">D Min</button>
-		<button type="button" class="btn btn-secondary" onclick="playAudio()">D# Min</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess()">E Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess('fmajor.wav')">F Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess()">F# Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess('gmajor.wav')">G Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess()">G# Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess('amajor.wav')">A Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess()">A# Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess('bmajor.wav')">B Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess()">B# Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess()">C Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess()">C# Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess()">D Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess()">D# Maj</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess()">E Min</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess()">F Min</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess()">F# Min</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess()">G Min</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess()">G# Min</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess()">A Min</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess()">A# Min</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess()">B Min</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess()">B# Min</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess()">C Min</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess()">C# Min</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess()">D Min</button>
+		<button type="button" class="btn btn-secondary" onclick="chordGuess()">D# Min</button>
 	</div>
 
 	<br><br>
@@ -67,7 +68,7 @@
 
 	var curAudio = "";
 
-	var audioFiles = ["bugsbunny1.wav", "daffyduck1.wav", "Record_0018.wav"];
+	var audioFiles = ["amajor.wav", "bmajor.wav", "fmajor.wav", "gmajor.wav"];
 
 	/**
 	 * Returns a random integer between min (inclusive) and max (inclusive)
@@ -91,6 +92,14 @@
 		audio.src = "audio_files/" + audioFiles[randNum];
 		curAudio = audioFiles[randNum];
 
+
+		audio.play();
+	}
+
+	function playAudioAgain() {
+		var audio = document.getElementById('audio');
+		audio.pause();
+		audio.currentTime = 0;
 
 		audio.play();
 	}
